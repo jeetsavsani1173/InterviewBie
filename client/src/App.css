@@ -1,38 +1,108 @@
-.App {
+.homePageWrapper {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-color: black;
+}
+
+.formWrapper {
+  padding: 5px;
+  border-radius: 10px;
+  width: 400px;
+  max-width: 90%;
+  color: black;
+  position: absolute;
+  z-index: 5;
+  margin-right: 325px;
+}
+
+.image1 {
+  border-radius: 10px;
+  height: 450px;
+}
+footer {
+  position: fixed;
+  bottom: 0;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputBox {
+  /* background-color: #ffbe79; */
+  background: transparent;
+  /* border: black; */
+  padding: 10px;
+  border-radius: 15px;
+  border-width: 5px;
+  margin-bottom: 14px;
+  outline: none;
+  font-weight: bold;
+  font-size: 16px;
+  color: black;
+  width: 340px;
+}
+
+.mainLabel {
+  margin-bottom: 20px;
+  margin-top: 0;
+}
+
+.homePageLogo {
+  height: 150px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.btn {
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.btnP {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+}
+
+.joinBtn {
+  background: black;
   color: white;
+  font-weight: bold;
+  width: 200px;
+  border-radius: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+.joinBtn:hover {
+  background: rgb(35, 33, 33);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.inputBox:focus {
+  border-color: rgb(160, 154, 154);
+}
+
+.createInfo {
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.createNewBtn {
+  color: red;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.createNewBtn:hover {
+  color: rgb(244, 36, 36);
+}
+
+a {
+  text-decoration: none;
 }
