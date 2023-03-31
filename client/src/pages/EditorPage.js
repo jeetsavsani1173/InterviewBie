@@ -46,8 +46,23 @@ function EditorPage() {
           setClients(clients);
         }
       );
+
+      //  listening for disconnected
+      socketRef.current.on(ACTIONS.DISCONNECTED, ({ socketId, username }) => {
+        toast.success(`${username} left the room.`);
+        setClients((prev) => {
+          return prev.filter((clients) => clients.socketId !== socketId);
+        });
+      });
     };
     init();
+    // clearing the listner -> othervise memory will be lick
+    return () => {
+      socketRef.current.disconnect();
+      // for unsubscribing any event of socket.io
+      socketRef.current.off(ACTIONS.JOINED);
+      socketRef.current.off(ACTIONS.DISCONNECTED);
+    };
   }, []);
 
   if (!location.state) {
