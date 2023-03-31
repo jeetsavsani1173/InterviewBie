@@ -12,6 +12,7 @@ import {
 import { toast } from "react-hot-toast";
 
 function EditorPage() {
+  const [clients, setClients] = useState([]);
   const socketRef = useRef(null);
   const location = useLocation();
   const reactNavigator = useNavigate();
@@ -32,15 +33,27 @@ function EditorPage() {
         roomId,
         username: location.state?.username,
       });
+
+      // listening for joined event
+      socketRef.current.on(
+        ACTIONS.JOINED,
+        ({ clients, username, socketId }) => {
+          // just ignore own username -> just notify other user excluding it self.
+          if (username !== location.state?.username) {
+            toast.success(`${username} joined the room.`);
+            console.log(`${username} joined`);
+          }
+          setClients(clients);
+        }
+      );
     };
     init();
   }, []);
 
-  const [clients, setClients] = useState([
-    { socketId: 1, username: "Jeet S" },
-    { socketId: 2, username: "Dharmesh P" },
-    { socketId: 3, username: "Harshad J" },
-  ]);
+  if (!location.state) {
+    return <Navigate to="/" />;
+  }
+
   return (
     <>
       <div className="mainWrap">
