@@ -106,7 +106,7 @@ function EditorPage() {
           </button>
         </div>
         <div className="editorWrap">
-          <Editor />
+          <Editor socketRef={socketRef} roomId={roomId} />
         </div>
         <div className="chatWrap">chat will be here</div>
       </div>
