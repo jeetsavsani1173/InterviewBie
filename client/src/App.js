@@ -8,7 +8,16 @@ function App() {
   return (
     <>
       <div>
-        <Toaster position="top-right"></Toaster>
+        <Toaster
+          position="top-right"
+          toastOptions={{
+            success: {
+              theme: {
+                primary: "#4aed88",
+              },
+            },
+          }}
+        ></Toaster>
       </div>
       <BrowserRouter>
         <Routes>
