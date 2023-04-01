@@ -4,13 +4,19 @@ const http = require("http");
 const { Server } = require("socket.io");
 const dotenv = require("dotenv");
 const ACTIONS = require("./Actions");
+const path = require("path");
 dotenv.config();
 
 const server = http.createServer(app);
 const io = new Server(server);
 
-const userSocketMap = {};
+// Extra for converting into producation build code
+// app.use(express.static("../client/build"));
+// app.use((req, res, next) => {
+//   res.sendFile(path.join(__dirname, "../client/build", "index.html"));
+// });
 
+const userSocketMap = {};
 function getAllConnectedClients(roomId) {
   // converting Map to Array
   return Array.from(io.sockets.adapter.rooms.get(roomId) || []).map(
@@ -23,8 +29,10 @@ function getAllConnectedClients(roomId) {
   );
 }
 
+let messages = [];
+
 io.on("connection", (socket) => {
-  console.log("socket connected", socket.id);
+  // console.log("socket connected", socket.id);
 
   socket.on(ACTIONS.JOIN, ({ roomId, username }) => {
     userSocketMap[socket.id] = username;
@@ -46,6 +54,11 @@ io.on("connection", (socket) => {
 
   socket.on(ACTIONS.SYNC_CODE, ({ socketId, code }) => {
     io.to(socketId).emit(ACTIONS.CODE_CHANGE, { code });
+  });
+
+  // for listening event for message..
+  socket.on("send_message", (data) => {
+    socket.to(data.room).emit("receive_message", data);
   });
 
   socket.on("disconnecting", () => {

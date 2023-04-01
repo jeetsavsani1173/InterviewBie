@@ -5,6 +5,7 @@
   justify-content: center;
   color: white;
   background-color: black;
+  margin-bottom: 10px;
 }
 
 .formWrapper {
@@ -115,10 +116,14 @@ a {
   text-decoration: none;
 }
 
+footer {
+  margin-bottom: 10px;
+}
+
 .mainWrap {
   display: grid;
   grid-template-columns: 230px 1fr;
-  /* height: 100vh; */
+  height: 100vh;
   display: flex;
   flex-direction: row;
 }
@@ -139,6 +144,7 @@ a {
   align-items: center;
   flex-wrap: wrap;
   gap: 20px;
+  margin-top: 20px;
 }
 
 .client {
@@ -189,19 +195,105 @@ a {
   padding: 10px;
   color: #fff;
   flex-direction: column;
-  width: 13%;
+  /* width: 15%; */
 }
 
 .editorWrap {
   display: grid;
   padding: 10px;
   width: 60%;
-  /* height: 100%; */
+  height: 100%;
+  /* height: 600px; */
+  /* width: 600px; */
 }
 
 .chatWrap {
+  /* background-color: white; */
   display: flex;
   flex-direction: column;
   width: 25%;
-  height: 100%;
+  padding: 10px;
+  height: auto;
+  /* color: wheat; */
+  background-color: #000;
+  color: black;
+}
+
+/* chat APP Styling */
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.chat {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* min-height: 100vh; */
+  /* background: #f8f8f8; */
+  background: black;
+  font-family: "Roboto", sans-serif;
+}
+
+section.chat__section {
+  width: 800px;
+  max-width: 95%;
+  /* background: #fff; */
+  background: black;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+.brand {
+  padding: 20px;
+  background: #f1f1f1;
+  display: flex;
+  align-items: center;
+}
+.brand h1 {
+  text-transform: uppercase;
+  font-size: 20px;
+  color: #131212;
+  margin-left: 10px;
+}
+.message__area {
+  height: 500px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding-top: 30px;
+}
+textarea {
+  width: 100%;
+  border: none;
+  padding: 20px;
+  font-size: 16px;
+  outline: none;
+  background: #fbfbfb;
+}
+
+.message {
+  padding: 12px;
+  border-radius: 4px;
+  margin-bottom: 30px;
+  max-width: 220px;
+  position: relative;
+}
+.incoming {
+  background: #8f8be8;
+  color: #fff;
+}
+.outgoing {
+  background: #e9eafd;
+  color: #787986;
+  margin-left: auto;
+}
+.message h4 {
+  position: absolute;
+  top: -20px;
+  left: 0;
+  color: #f1e8e8;
+  font-size: 14px;
 }

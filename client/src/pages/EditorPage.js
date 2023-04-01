@@ -10,11 +10,13 @@ import {
   useParams,
 } from "react-router-dom";
 import { toast } from "react-hot-toast";
+import Chat from "../components/Chat";
 
 function EditorPage() {
   const [clients, setClients] = useState([]);
   const socketRef = useRef(null);
   const codeRef = useRef(null);
+  const chatRef = useRef(null);
   const location = useLocation();
   const reactNavigator = useNavigate();
   const { roomId } = useParams();
@@ -119,7 +121,9 @@ function EditorPage() {
             }}
           />
         </div>
-        <div className="chatWrap">chat will be here</div>
+        <div className="chatWrap">
+          <Chat socketRef={socketRef} roomId={roomId} />
+        </div>
       </div>
     </>
   );
