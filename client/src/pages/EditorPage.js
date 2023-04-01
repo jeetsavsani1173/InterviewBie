@@ -93,12 +93,12 @@ function EditorPage() {
   return (
     <>
       <div className="mainWrap">
-        <div className="aside">
+        <div className="asideWrap">
           <div className="asideInner">
             <div className="logo">
               <img className="logoImage" src="/logo-3.png" alt="logo" />
             </div>
-            <h3>Connected</h3>
+            <h3 style={{ alignItems: "center" }}>Connected</h3>
             <div className="clientsList">
               {clients.map((client) => (
                 <Client key={client.socketId} username={client.username} />

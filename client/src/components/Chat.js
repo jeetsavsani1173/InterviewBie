@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 
 function Chat({ socketRef, roomId }) {
   const [messageList, setMessageList] = useState([]);
-  const [typed, setTyped] = useState(null);
+  const [typed, setTyped] = useState("");
   const location = useLocation();
   const username = location.state?.username;
 
