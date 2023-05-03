@@ -123,20 +123,12 @@ footer {
 }
 
 .mainWrap {
-  display: grid;
-  grid-template-columns: 230px 1fr;
-  height: 100vh;
   display: flex;
+  height: 100%;
+  width: 100%;
   flex-direction: row;
 }
 
-.asideWrap {
-  background: #1c1e29;
-  padding: 16px;
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-}
 .asideInner {
   flex: 1;
 }
@@ -185,11 +177,72 @@ footer {
   background: rgb(49, 192, 49);
 }
 
+.sendBtn,
+.runBtn {
+  color: white;
+  background-color: rgb(99, 92, 232);
+}
+
 .CodeMirror {
-  min-height: calc(100vh - 20px);
   font-size: 16px;
   line-height: 1.6;
+  min-height: calc(76vh);
+  width: 100%;
   /* padding-top: 20px; */
+}
+
+.IO-container {
+  display: flex;
+  justify-content: left;
+  min-height: calc(4vh);
+  width: 100%;
+}
+
+.inputArea {
+  font-size: 16px;
+  line-height: 1.6;
+  padding-top: 10px;
+  background-color: rgba(0, 0, 0, 0.401);
+  color: white;
+  font-size: 16px;
+  height: calc(15vh);
+  width: 100%;
+}
+
+.clickedLabel {
+  background-color: rgb(99, 92, 232);
+  border: 1px solid transparent;
+  color: white;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 2px 2px;
+  cursor: pointer;
+  width: 10%;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.notClickedLabel {
+  background-color: rgb(189, 187, 225);
+  border: 1px solid transparent;
+  color: white;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 2px 2px;
+  cursor: pointer;
+  width: 10%;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
 
 .asideWrap {
@@ -206,20 +259,34 @@ footer {
   padding: 10px;
   width: 60%;
   height: 100%;
-  /* height: 600px; */
-  /* width: 600px; */
 }
 
 .chatWrap {
-  /* background-color: white; */
   display: flex;
   flex-direction: column;
   width: 25%;
   padding: 10px;
   height: auto;
-  /* color: wheat; */
   background-color: #000;
   color: black;
+}
+
+.seLang {
+  border: none;
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align-last: center;
+}
+
+.copyBtn,
+.runBtn,
+.leaveBtn {
+  width: 100%;
+  margin-top: 20px;
 }
 
 /* chat APP Styling */

@@ -38,6 +38,7 @@ function Editor({ socketRef, roomId, onCodeChange }) {
       // editorRef.current.setValue("console.log('Hello World !')");
     }
     init();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -48,6 +49,7 @@ function Editor({ socketRef, roomId, onCodeChange }) {
         }
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [socketRef.current]);
   return <textarea id="realTimeEditor"></textarea>;
 }
