@@ -137,7 +137,7 @@ function EditorPage() {
       url: "https://code-compiler.p.rapidapi.com/v2",
       headers: {
         "content-type": "application/x-www-form-urlencoded",
-        "X-RapidAPI-Key": "9c3e085493msh36c969795ac1650p1624b9jsn1c1d760832b1",
+        "X-RapidAPI-Key": process.env.REACT_APP_API_KEY,
         "X-RapidAPI-Host": "code-compiler.p.rapidapi.com",
       },
       data: encodedParams,
