@@ -1,7 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { useLocation } from "react-router-dom";
+import { ZegoUIKitPrebuilt } from "@zegocloud/zego-uikit-prebuilt";
 
 function Chat({ socketRef, roomId }) {
+  // const [myStream, setMyStream] = useState();
+  // const [remoteStream, setRemoteStream] = useState();
   const [toggle, setToggle] = useState("chat");
   const [messageList, setMessageList] = useState([]);
   const [typed, setTyped] = useState("");
@@ -32,13 +35,6 @@ function Chat({ socketRef, roomId }) {
   }, [socketRef.current]);
 
   const inputClicked = () => {
-    // const inputArea = document.getElementById("input");
-    // inputArea.placeholder = "Enter your input here";
-    // inputArea.value = "";
-    // inputArea.disabled = false;
-    // const chatsection = document.getElementById("chat__section");
-    // chatsection.appendChild("videoClass");
-    // chatsection.removeChild("chatClass");
     const chatLable = document.getElementById("chatLable");
     const videoLable = document.getElementById("videoLable");
     chatLable.classList.remove("notClickedLabel");
@@ -49,14 +45,6 @@ function Chat({ socketRef, roomId }) {
   };
 
   const outputClicked = () => {
-    // const inputArea = document.getElementById("input");
-    // inputArea.placeholder =
-    //   "You output will apear here, Click 'Run code' to see it";
-    // inputArea.value = "";
-    // inputArea.disabled = true;
-    // const chatsection = document.getElementById("chat__section");
-    // chatsection.appendChild("chatClass");
-    // chatsection.removeChild("videoClass");
     const chatLable = document.getElementById("chatLable");
     const videoLable = document.getElementById("videoLable");
     chatLable.classList.remove("clickedLabel");
@@ -83,6 +71,28 @@ function Chat({ socketRef, roomId }) {
   const handleChange = (e) => {
     setTyped(e.target.value);
   };
+
+  const meeting = async (element) => {
+    const appID = 1154485049;
+    const serverSecret = "083fcd1eb81a1764dcb456c096c675c5";
+    const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(
+      appID,
+      serverSecret,
+      roomId,
+      Date.now().toString(),
+      username
+    );
+
+    const zp = ZegoUIKitPrebuilt.create(kitToken);
+
+    zp.joinRoom({
+      container: element,
+      scenario: {
+        mode: ZegoUIKitPrebuilt.GroupCall,
+      },
+    });
+  };
+
   return (
     <div className="chat">
       <section className="chat__section">
@@ -132,7 +142,9 @@ function Chat({ socketRef, roomId }) {
           </div>
         ) : (
           <div className="videoClass">
-            <h1 style={{ color: "white" }}>Video section</h1>
+            {/* <h1 style={{ color: "white" }}>Video section</h1> */}
+            {/* <button className="btn">My Stream</button> */}
+            <div ref={meeting} style={{ width: "100%", height: "70vh" }}></div>
           </div>
         )}
       </section>

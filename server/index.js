@@ -29,8 +29,6 @@ function getAllConnectedClients(roomId) {
   );
 }
 
-let messages = [];
-
 io.on("connection", (socket) => {
   // console.log("socket connected", socket.id);
 
@@ -73,6 +71,9 @@ io.on("connection", (socket) => {
     // for leaving room from socket server..
     socket.leave();
   });
+
+  // for video calling..
+  socket.on("user:call", ({ roomId, offer }) => {});
 });
 
 const PORT = process.env.PORT || 5000;
